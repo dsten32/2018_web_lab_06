@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>1: Understanding the sequence of JavaScript execution</title>
+    <script type="text/javascript">
+        alert("This alert message is called from the head element.\n"
+                + "Alert messages block any further generation of a web page content until OK is clicked.\n"
+                + "You can see that this message appears before the page's body is loaded.\n"
+                + "It's because the head element is loaded before the body element.");
+
+        function doAlert() {
+            alert("This alert is within a function declared in the head element.\n"
+                + "The function itself is not called until the end of the body element");
+
+        }
+
+
+    </script>
+</head>
+<body onload="alert('This alert occurs in the body onload event handler\nand is only seen when the entire body has finished loading');">
+<p>Javascript test page 1: understanding the sequence of JavaScript execution</p>
+
+<p>Before the alert</p>
+
+<script>alert("This alert is scripted in part way through the body element");</script>
+
+<p>After the alert.</p>
+
+<p>Before calling function doAlert():</p>
+
+<script>
+   doAlert();
+</script>
+
+<p>After calling function doAlert().</p>
+</body>
+</html>
