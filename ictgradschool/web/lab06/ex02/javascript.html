@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>1: Understanding the sequence of JavaScript execution</title>
+    <script type="text/javascript">
+        console.log("This console.log message is called from the head element.\n"
+                + "console.log messages block any further generation of a web page content until OK is clicked.\n"
+                + "You can see that this message appears before the page's body is loaded.\n"
+                + "It's because the head element is loaded before the body element.  At:"  + Date());
+
+        function doLogging() {
+            console.log("This console.log is within a function declared in the head element.\n"
+                + "The function itself is not called until the end of the body element At:"  + Date());
+
+        }
+
+
+    </script>
+</head>
+<body onload="console.log('This console.log occurs in the body onload event handler\nand is only seen when the entire body has finished loading At:'  + Date());">
+<p>Javascript test page 1: understanding the sequence of JavaScript execution</p>
+
+<p>Before the console.log</p>
+
+<script>console.log("This console.log is scripted in part way through the body element At:"  + Date());</script>
+
+<p>After the console.log.</p>
+
+<p>Before calling function doconsole.log():</p>
+
+<script>
+   doLogging();
+</script>
+
+<p>After calling function doconsole.log().</p>
+</body>
+</html>
